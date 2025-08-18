@@ -19,4 +19,18 @@ export class RawgService {
       throw new Error(`Erro ao buscar jogos: ${error.message || error}`);
     }
   }
+
+  async findOne(id: number) {
+    try {
+      const response = await firstValueFrom(
+        this.http.get(
+          `https://api.rawg.io/api/games/${id}?key=${this.api_key}`,
+        ),
+      );
+
+      return response.data;
+    } catch (error) {
+      throw new Error(`Erro ao buscar jogos: ${error.message || error}`);
+    }
+  }
 }
