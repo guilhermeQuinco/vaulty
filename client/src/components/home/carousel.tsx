@@ -7,6 +7,7 @@ export default function CarouselHome() {
         <Carousel
           opts={{
             align: "start",
+            slidesToScroll: 4,
           }}
           className="relative w-full max-w-5xl"
         >
@@ -14,12 +15,12 @@ export default function CarouselHome() {
             {Array.from({ length: 10 }).map((_, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
                 <div className="p-1">
-                  <Card>
-                    <CardContent className="flex aspect-square items-center justify-center p-6">
-                      <span className="text-3xl font-semibold">
-                        {index + 1}
-                      </span>
-                    </CardContent>
+                  <Card className="relative aspect-square overflow-hidden">
+                    <img
+                      src={`https://picsum.photos/seed/${index}/400/300`}
+                      alt={`Game ${index + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
                   </Card>
                   <div className="flex items-center justify-center mt-4">
                     <span>👁️ 100k</span>
