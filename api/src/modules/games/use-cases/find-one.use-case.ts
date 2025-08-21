@@ -3,11 +3,11 @@ import { RawgService } from 'src/infra/implementations/services/http/rawg/rawg.s
 import { GameOutputMapper } from '../common/game-output';
 
 @Injectable()
-export class ListAllGamesUseCase {
+export class FindOneGameUseCase {
   constructor(private readonly rawgService: RawgService) {}
 
-  async execute() {
-    const output = await this.rawgService.listAllGames();
-    return output.results.map((data) => GameOutputMapper.toOutput(data));
+  async execute(id: number) {
+    const output = await this.rawgService.findOne(id);
+    return GameOutputMapper.toOutput(output);
   }
 }
